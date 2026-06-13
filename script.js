@@ -29,7 +29,7 @@ const overlayButtons = {
 
 const CELL = 4;
 const WALL_H = 3.2;
-const PLAYER_SPEED = 7.2;
+const PLAYER_SPEED = 8.2;
 const TURN_SPEED = 2.8;
 const keys = new Set();
 
@@ -552,7 +552,7 @@ function makePresence() {
   mesh.visible = false;
   const start = tileToWorld(27.5, 19.5);
   mesh.position.set(start.x, 0, start.z);
-  return { mesh, visible: false, stalking: false, blink: 4, chill: 18, speed: 2.05, twitchParts, eyeLight };
+  return { mesh, visible: false, stalking: false, blink: 4, chill: 18, speed: 2.35, twitchParts, eyeLight };
 }
 
 function resetPlayer() {
