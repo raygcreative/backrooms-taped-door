@@ -615,7 +615,7 @@ function update(dt) {
   playerAngle += turn * TURN_SPEED * dt;
 
   const forwardVec = new THREE.Vector3(Math.sin(playerAngle), 0, Math.cos(playerAngle));
-  const sideVec = new THREE.Vector3(Math.cos(playerAngle), 0, -Math.sin(playerAngle));
+  const sideVec = new THREE.Vector3(-Math.cos(playerAngle), 0, Math.sin(playerAngle));
   const move = forwardVec.multiplyScalar(forward).add(sideVec.multiplyScalar(strafe));
   if (move.lengthSq() > 0) {
     move.normalize().multiplyScalar(PLAYER_SPEED * dt);
@@ -880,6 +880,27 @@ window.addEventListener("keydown", (event) => {
   if (key === "p" || key === "escape") togglePause();
 });
 window.addEventListener("keyup", (event) => keys.delete(event.key.toLowerCase()));
+
+document.querySelectorAll("[data-hold-key]").forEach((button) => {
+  const holdKey = button.dataset.holdKey;
+  const press = (event) => {
+    event.preventDefault();
+    if (gameState === "playing") keys.add(holdKey);
+  };
+  const release = (event) => {
+    event.preventDefault();
+    keys.delete(holdKey);
+  };
+
+  button.addEventListener("pointerdown", (event) => {
+    press(event);
+    button.setPointerCapture?.(event.pointerId);
+  });
+  button.addEventListener("pointerup", release);
+  button.addEventListener("pointercancel", release);
+  button.addEventListener("pointerleave", release);
+  button.addEventListener("contextmenu", (event) => event.preventDefault());
+});
 
 startButton.addEventListener("click", resetGame);
 resumeButton.addEventListener("click", () => setState("playing"));
