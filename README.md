@@ -28,11 +28,13 @@ http://localhost:8000
 - `D` / `Arrow Right`: turn right
 - `Q` / `E`: strafe left/right
 - `P` / `Esc`: pause or resume
+- Mobile: use the on-screen movement pad and `Q` / `E` strafe buttons
 - Menu screens: `Enter` selects the highlighted button, and arrow keys change
   the highlighted choice
 
 The HUD also includes buttons for pause, returning to the home screen, and
-toggling the fluorescent ambient sound.
+toggling the fluorescent ambient sound. On phones and tablets, touch controls
+appear near the bottom of the screen after the game starts.
 
 ## Objective
 
