@@ -140,6 +140,10 @@ p {
   font-weight: 800;
 }
 
+.mobile-control-summary {
+  display: none;
+}
+
 .panel button + button {
   margin-left: 10px;
 }
@@ -277,12 +281,48 @@ p {
     display: flex;
   }
 
+  .touch-pad {
+    order: 2;
+  }
+
+  .touch-strafe {
+    order: 1;
+  }
+
   .message {
     bottom: 154px;
   }
 }
 
 @media (max-width: 620px) {
+  .overlay {
+    align-items: center;
+    padding: max(12px, env(safe-area-inset-top)) 16px max(92px, env(safe-area-inset-bottom));
+  }
+
+  .panel {
+    width: min(100%, 420px);
+    max-height: min(700px, calc(100dvh - 128px));
+    overflow: auto;
+    padding: 22px;
+    text-align: center;
+  }
+
+  .panel p {
+    margin: 10px auto 0;
+    max-width: 28ch;
+    font-size: 0.96rem;
+  }
+
+  .eyebrow {
+    margin-bottom: 6px;
+  }
+
+  h1 {
+    max-width: none;
+    font-size: clamp(2.65rem, 15vw, 4.25rem);
+  }
+
   .hud {
     top: 10px;
     left: 10px;
@@ -295,12 +335,30 @@ p {
   }
 
   .key-grid {
-    grid-template-columns: 1fr;
-    gap: 4px;
+    display: none;
   }
 
-  .key-grid span:nth-child(even) {
-    margin-bottom: 8px;
+  .mobile-control-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin: 18px 0 20px;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .mobile-control-summary span {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+    padding: 8px 3px;
+    border-bottom: 1px solid rgba(255, 250, 191, 0.16);
+  }
+
+  .mobile-control-summary strong {
+    color: #fff8b6;
+    font-weight: 850;
+    text-transform: uppercase;
   }
 
   .panel button + button {
@@ -320,5 +378,10 @@ p {
 
   .touch-button.wide {
     width: 58px;
+  }
+
+  .touch-strafe {
+    align-self: end;
+    flex-direction: column;
   }
 }
