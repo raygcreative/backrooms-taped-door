@@ -214,6 +214,74 @@ p {
   backdrop-filter: blur(6px);
 }
 
+.touch-controls {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  left: 14px;
+  z-index: 4;
+  display: none;
+  align-items: end;
+  justify-content: space-between;
+  gap: 14px;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.touch-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 56px);
+  grid-template-rows: repeat(2, 56px);
+  gap: 8px;
+}
+
+.touch-strafe {
+  display: flex;
+  gap: 8px;
+}
+
+.touch-button {
+  width: 56px;
+  min-height: 56px;
+  padding: 0;
+  border-color: rgba(255, 250, 191, 0.34);
+  background: rgba(18, 19, 10, 0.58);
+  color: #fff8b6;
+  font-size: 1.35rem;
+  line-height: 1;
+  box-shadow: none;
+  pointer-events: auto;
+  backdrop-filter: blur(7px);
+  touch-action: none;
+}
+
+.touch-button.wide {
+  width: 66px;
+  font-size: 1rem;
+}
+
+.touch-button.empty {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.touch-button:active {
+  background: rgba(235, 230, 133, 0.24);
+  transform: translateY(1px);
+}
+
+@media (pointer: coarse), (max-width: 820px) {
+  .touch-controls {
+    display: flex;
+  }
+
+  .message {
+    bottom: 154px;
+  }
+}
+
 @media (max-width: 620px) {
   .hud {
     top: 10px;
@@ -237,5 +305,20 @@ p {
 
   .panel button + button {
     margin: 10px 0 0;
+  }
+
+  .touch-pad {
+    grid-template-columns: repeat(3, 52px);
+    grid-template-rows: repeat(2, 52px);
+    gap: 7px;
+  }
+
+  .touch-button {
+    width: 52px;
+    min-height: 52px;
+  }
+
+  .touch-button.wide {
+    width: 58px;
   }
 }
