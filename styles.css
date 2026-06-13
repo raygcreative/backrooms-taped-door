@@ -1,0 +1,241 @@
+:root {
+  color-scheme: dark;
+  --ink: #f3efc8;
+  --muted: #c9c08c;
+  --panel: rgba(15, 15, 8, 0.78);
+  --edge: rgba(242, 239, 184, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #0d0e08;
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button {
+  min-height: 44px;
+  border: 1px solid rgba(255, 250, 191, 0.45);
+  border-radius: 6px;
+  padding: 0 18px;
+  background: #ebe685;
+  color: #20200f;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+  box-shadow: 0 0 24px rgba(235, 230, 133, 0.22);
+}
+
+button:hover,
+button:focus-visible,
+button.keyboard-selected {
+  outline: 2px solid #fff7a8;
+  outline-offset: 3px;
+}
+
+button.keyboard-selected {
+  box-shadow: 0 0 0 4px rgba(47, 143, 216, 0.28), 0 0 24px rgba(235, 230, 133, 0.22);
+}
+
+button.secondary,
+.icon-button {
+  background: rgba(255, 253, 190, 0.08);
+  color: var(--ink);
+  box-shadow: none;
+}
+
+.game-shell {
+  position: fixed;
+  inset: 0;
+  min-width: 320px;
+  background: #111207;
+}
+
+#gameCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: auto;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(222, 217, 124, 0.13), transparent 38%),
+    linear-gradient(rgba(6, 7, 4, 0.28), rgba(6, 7, 4, 0.84));
+  backdrop-filter: blur(2px);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.panel {
+  width: min(560px, 100%);
+  border: 1px solid var(--edge);
+  border-radius: 8px;
+  padding: clamp(22px, 5vw, 40px);
+  background: var(--panel);
+  box-shadow: 0 18px 80px rgba(0, 0, 0, 0.58);
+}
+
+.panel.compact {
+  width: min(420px, 100%);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #f2ec84;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  margin: 0 0 12px;
+  line-height: 1.03;
+  letter-spacing: 0;
+}
+
+h1 {
+  max-width: 10ch;
+  font-size: clamp(3rem, 12vw, 7rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 7vw, 4rem);
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.key-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 18px;
+  margin: 24px 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.key-grid span:nth-child(odd) {
+  color: #fff8b6;
+  font-weight: 800;
+}
+
+.panel button + button {
+  margin-left: 10px;
+}
+
+.hud {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 3;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.hud > div,
+.hud .icon-button {
+  pointer-events: auto;
+  border: 1px solid rgba(255, 250, 191, 0.2);
+  border-radius: 6px;
+  background: rgba(10, 11, 6, 0.44);
+  backdrop-filter: blur(6px);
+}
+
+.hud > div:not(.hud-actions) {
+  display: grid;
+  gap: 2px;
+  min-width: 154px;
+  padding: 10px 12px;
+}
+
+.hud-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  border: 0 !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+.hud strong {
+  font-size: 0.92rem;
+}
+
+.hud span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.icon-button {
+  min-height: 40px;
+  padding: 0 12px;
+  font-size: 0.86rem;
+}
+
+.message {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 4;
+  max-width: min(520px, calc(100% - 32px));
+  transform: translateX(-50%);
+  border: 1px solid rgba(255, 250, 191, 0.24);
+  border-radius: 6px;
+  padding: 10px 14px;
+  background: rgba(12, 13, 7, 0.72);
+  color: #fff8b6;
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+
+@media (max-width: 620px) {
+  .hud {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    align-items: stretch;
+  }
+
+  .hud-actions {
+    max-width: 180px;
+  }
+
+  .key-grid {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .key-grid span:nth-child(even) {
+    margin-bottom: 8px;
+  }
+
+  .panel button + button {
+    margin: 10px 0 0;
+  }
+}
