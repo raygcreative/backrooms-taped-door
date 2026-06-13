@@ -23,6 +23,7 @@
             <span>S / ↓</span><span>Move back</span>
             <span>A D / ← →</span><span>Turn</span>
             <span>Q / E</span><span>Strafe</span>
+            <span>Phone</span><span>Use the on-screen movement pad</span>
             <span>P / Esc</span><span>Pause</span>
             <span>Menus</span><span>Enter selects, ← / → changes choice</span>
             <span>View</span><span>Third-person over-the-shoulder</span>
@@ -67,8 +68,23 @@
       </div>
 
       <div id="message" class="message hidden"></div>
+
+      <nav class="touch-controls" aria-label="Mobile movement controls">
+        <div class="touch-pad" aria-label="Move and turn">
+          <button class="touch-button empty" type="button" tabindex="-1" aria-hidden="true"></button>
+          <button class="touch-button" type="button" data-hold-key="w" aria-label="Move forward">↑</button>
+          <button class="touch-button empty" type="button" tabindex="-1" aria-hidden="true"></button>
+          <button class="touch-button" type="button" data-hold-key="a" aria-label="Turn left">←</button>
+          <button class="touch-button" type="button" data-hold-key="s" aria-label="Move backward">↓</button>
+          <button class="touch-button" type="button" data-hold-key="d" aria-label="Turn right">→</button>
+        </div>
+        <div class="touch-strafe" aria-label="Strafe controls">
+          <button class="touch-button wide" type="button" data-hold-key="q" aria-label="Strafe left">Q</button>
+          <button class="touch-button wide" type="button" data-hold-key="e" aria-label="Strafe right">E</button>
+        </div>
+      </nav>
     </main>
 
-    <script type="module" src="script.js?v=threejs5"></script>
+    <script type="module" src="script.js?v=threejs6"></script>
   </body>
 </html>
